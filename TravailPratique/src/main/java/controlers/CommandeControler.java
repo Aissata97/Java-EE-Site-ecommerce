@@ -38,7 +38,6 @@ public class CommandeControler extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
-
         
         String url = "";
         
@@ -58,18 +57,25 @@ public class CommandeControler extends HttpServlet {
                     url = "WEB-INF/commandes.jsp";
                 }
             }else if (listeProduitPanier != null) {
-                double prixTotalCommande = Double.parseDouble(request.getParameter("prixTotal"));
-                url = "panier.jsp";
-                CommandeAction.enregistrerCommande(idClient, dateCommande, prixTotalCommande);
+                
+                if(listeProduitPanier.size() > 0){
+                    double prixTotalCommande = Double.parseDouble(request.getParameter("prixTotal"));
+                    url = "panier.jsp";
+                    CommandeAction.enregistrerCommande(idClient, dateCommande, prixTotalCommande);
 
-                int idCommande = CommandeManager.getIdDerniereCommande();
-                //LigneCommandeAction.enregistrerLigneCommande(idCommande, idClient, idClient);
-                for (Map.Entry<Integer, LigneComande> p : listeProduitPanier.entrySet()) {
-                    int key = p.getKey();
-                    LigneComande ligne = p.getValue();
-                    LigneCommandeAction.enregistrerLigneCommande(idCommande, ligne.getId_produit(), ligne.getQte_produit());
+                    int idCommande = CommandeManager.getIdDerniereCommande();
+                    //LigneCommandeAction.enregistrerLigneCommande(idCommande, idClient, idClient);
+                    for (Map.Entry<Integer, LigneComande> p : listeProduitPanier.entrySet()) {
+                        int key = p.getKey();
+                        LigneComande ligne = p.getValue();
+                        LigneCommandeAction.enregistrerLigneCommande(idCommande, ligne.getId_produit(), ligne.getQte_produit());
+                    }
+                    request.setAttribute(Validation.msgInfoCommande, "Votre commande a bien été enregistrée !");         
+                }else{
+                    url = "panier.jsp";
+                    request.setAttribute(Validation.msgInfoCommande, "Votre panier est vide");
                 }
-                request.setAttribute(Validation.msgInfoCommande, "Votre commande a bien été enregistrée !");       
+                
             }else {
                 url = "panier.jsp";
                 request.setAttribute(Validation.msgInfoCommande, "Votre panier est vide");

@@ -16,10 +16,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Detail du produit</title>
         <link rel="stylesheet" href="css/produit.css">
-        <%@include file="includes/head.jsp" %> 
+        <%@include file="../includes/head.jsp" %> 
     </head>
     <body>
-        <%@include file="includes/header.jsp" %>
+        <%@include file="../includes/header.jsp" %>
 
         <div class="product_box">
             <h1><b><%=produit.getTitre()%></b></h1>
@@ -66,6 +66,6 @@
                 
         
 
-        <%@include file="includes/footer.jsp" %>
+        <%@include file="../includes/footer.jsp" %>
     </body>
 </html>
