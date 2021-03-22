@@ -39,39 +39,44 @@ public class CommandeControler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
 
-        //Recuperation des donnees
-        HashMap<Integer, LigneComande> listeProduitPanier = (HashMap<Integer, LigneComande>) session.getAttribute("panier");
-        //double prixTotalCommande = Double.parseDouble(request.getParameter("prixTotal"));
-        Client client = (Client) session.getAttribute(ClientAction.clientSessionAttr);
-        int idClient = client.getId_client();
-        long millis = currentTimeMillis();
-        Date dateCommande = new Date(millis);
-
+        
         String url = "";
-        String action = request.getParameter("action");
+        
+        //Si le client est connecté...
+        if (session != null){
+            //Recuperation des donnees
+            HashMap<Integer, LigneComande> listeProduitPanier = (HashMap<Integer, LigneComande>) session.getAttribute("panier");
+            Client client = (Client) session.getAttribute(ClientAction.clientSessionAttr);
+            int idClient = client.getId_client();
+            long millis = currentTimeMillis();
+            Date dateCommande = new Date(millis);
+            
+            String action = request.getParameter("action");
+            if (action != null) {
+                if (action.equals("commandes")) {
+                    CommandeAction.afficherCommandeParClient(request, idClient);
+                    url = "WEB-INF/commandes.jsp";
+                }
+            }else if (listeProduitPanier != null) {
+                double prixTotalCommande = Double.parseDouble(request.getParameter("prixTotal"));
+                url = "panier.jsp";
+                CommandeAction.enregistrerCommande(idClient, dateCommande, prixTotalCommande);
 
-        if (action != null) {
-            if (action.equals("commandes")) {
-                CommandeAction.afficherCommandeParClient(request, idClient);
-                url = "WEB-INF/commandes.jsp";
-            }
-        } else if (listeProduitPanier != null) {
-            double prixTotalCommande = Double.parseDouble(request.getParameter("prixTotal"));
-            url = "WEB-INF/panier.jsp";
-            CommandeAction.enregistrerCommande(idClient, dateCommande, prixTotalCommande);
-
-            int idCommande = CommandeManager.getIdDerniereCommande();
-            //LigneCommandeAction.enregistrerLigneCommande(idCommande, idClient, idClient);
-            for (Map.Entry<Integer, LigneComande> p : listeProduitPanier.entrySet()) {
-                int key = p.getKey();
-                LigneComande ligne = p.getValue();
-                LigneCommandeAction.enregistrerLigneCommande(idCommande, ligne.getId_produit(), ligne.getQte_produit());
-            }
-            request.setAttribute(Validation.msgInfoCommande, "Votre commande a bien été enregistrée !");
-
-        } else {
-            url = "WEB-INF/panier.jsp";
-            request.setAttribute(Validation.msgInfoCommande, "Votre panier est vide");
+                int idCommande = CommandeManager.getIdDerniereCommande();
+                //LigneCommandeAction.enregistrerLigneCommande(idCommande, idClient, idClient);
+                for (Map.Entry<Integer, LigneComande> p : listeProduitPanier.entrySet()) {
+                    int key = p.getKey();
+                    LigneComande ligne = p.getValue();
+                    LigneCommandeAction.enregistrerLigneCommande(idCommande, ligne.getId_produit(), ligne.getQte_produit());
+                }
+                request.setAttribute(Validation.msgInfoCommande, "Votre commande a bien été enregistrée !");       
+            }else {
+                url = "panier.jsp";
+                request.setAttribute(Validation.msgInfoCommande, "Votre panier est vide");
+            }              
+        }else {
+            url = "login.jsp";
+            request.setAttribute(Validation.msgLoginRequis, "Vous devez vous connecter pour passer une commande");
         }
 
         request.getRequestDispatcher(url).forward(request, response);

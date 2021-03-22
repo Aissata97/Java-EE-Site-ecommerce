@@ -49,7 +49,7 @@ public class ClientControler extends HttpServlet {
                 CookieAction.ajouterCookie(response, "email", email);
                 CookieAction.ajouterCookie(response, "mdp", mdp);
             }
-            url = "WEB-INF/acceuil.jsp";
+            url = "acceuil.jsp";
         } else {
             url = "login.jsp";
         }

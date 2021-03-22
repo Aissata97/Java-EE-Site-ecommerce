@@ -16,11 +16,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Liste des commandes</title>
-        <%@include file="includes/head.jsp" %>
+        <%@include file="../includes/head.jsp" %>
         <link rel="stylesheet" href="css/commandes.css">
     </head>
     <body>
-        <%@include file="includes/header.jsp" %>
+        <%@include file="../includes/header.jsp" %>
         <h1>Vos commandes</h1>
         <table>
             <tr>
@@ -39,6 +39,6 @@
                    }%>
         </table>
 
-        <%@include file="includes/footer.jsp" %>
+        <%@include file="../includes/footer.jsp" %>
     </body>
 </html>

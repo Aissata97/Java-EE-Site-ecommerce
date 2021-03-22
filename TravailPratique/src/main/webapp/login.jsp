@@ -6,8 +6,11 @@
 
 <%@page import="managers.CookieManager"%>
 <%@page import="actions.ClientAction"%>
+<%@page import="utils.Validation" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% String erreurClient = (String)request.getAttribute(ClientAction.erreurClient); 
+
+<% String erreurClient = (String)request.getAttribute(ClientAction.erreurClient);
+   String msgLoginRequis = (String) request.getAttribute(Validation.msgLoginRequis);
     Cookie email = CookieManager.getCookyByNom(request, "email");
     Cookie mdp = CookieManager.getCookyByNom(request, "mdp");
 %>
@@ -23,6 +26,8 @@
             <div class="imgcontainer">
                 <img src="images/login-icon.png" alt="Avatar" class="avatar">
             </div>
+            
+            <% out.println((msgLoginRequis == null) ? "<p></p>" : "<p style='color:red; text-align:center;'>" + msgLoginRequis + "</p>"); %>
 
             <div class="container">
                 <label for="email"><b>Email</b></label>
@@ -36,7 +41,7 @@
                     <input type="checkbox" checked="checked" name="souvenir"> Se souvenir de moi
                 </label>
             </div>
-            <p><% out.println( (erreurClient == null) ? "<p></p>" : "<p style='color:red; text-align:center;'>"+ erreurClient + "</p>"); %></p>
+            <% out.println( (erreurClient == null) ? "<p></p>" : "<p style='color:red; text-align:center;'>"+ erreurClient + "</p>"); %>
 
             <div class="container" style="background-color:#f1f1f1">
                 <span class="psw">Vous n'avez pas de compte ? <a href="inscription.jsp">Inscription</a></span>

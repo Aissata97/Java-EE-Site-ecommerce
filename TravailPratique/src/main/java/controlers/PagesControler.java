@@ -29,19 +29,19 @@ public class PagesControler extends HttpServlet {
         
         if (action != null) {
             if (action.equals("home")) {
-                url = "WEB-INF/acceuil.jsp";
+                url = "acceuil.jsp";
             } else if (action.equals("galerie")) {
-                url = "WEB-INF/galerie.jsp";
+                url = "galerie.jsp";
             }else if (action.equals("deconnexion")){
                 url = "login.jsp";
                 SessionManager.supprimerSession(request);
             }else if (action.equals("panier")){
-                url = "WEB-INF/panier.jsp";
+                url = "panier.jsp";
             }else if (action.equals("commandes")){
                 url = "commandeControler?action=commandes";
             }
         }else{
-            url = "WEB-INF/acceuil.jsp";
+            url = "acceuil.jsp";
         }
         
         request.getRequestDispatcher(url).forward(request, response);

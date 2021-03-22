@@ -13,15 +13,16 @@ import java.util.logging.Logger;
  */
 public class ConnexionBd {
     private static String nomBd = "tpjava";
-    private static String login = "root";
+    private static String login = "postgres";
     private static String pwd = "abc123...";
-    private static String urlConnection = "jdbc:mariadb://localhost:3310/"+nomBd;
+    //private static String urlConnection = "jdbc:mariadb://localhost:3310/"+nomBd;
+    private static String urlConnection = "jdbc:postgresql://localhost:5432/" + nomBd;
     private static Connection connection;
 
     public static PreparedStatement getPs(String query) {
         PreparedStatement retour = null;
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(urlConnection, login, pwd);            
             retour = connection.prepareStatement(query);
         } catch (ClassNotFoundException ex) {

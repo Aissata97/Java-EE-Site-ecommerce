@@ -32,13 +32,13 @@ public class ProduitControler extends HttpServlet {
 
         if (idCategorie != null) {
             ProduitAction.afficherLesProduitsParcategorie(request, Integer.parseInt(idCategorie));
-            url = "WEB-INF/cataogue.jsp";
+            url = "cataogue.jsp";
         } else if (idProduit != null) {
             ProduitAction.afficherDetailProduit(request, Integer.parseInt(idProduit));
-            url = "WEB-INF/detail_produit.jsp";
+            url = "detail_produit.jsp";
         } else {
             ProduitAction.afficherTousLesProduit(request);
-            url = "WEB-INF/cataogue.jsp";
+            url = "cataogue.jsp";
         }
 
         request.getRequestDispatcher(url).forward(request, response);

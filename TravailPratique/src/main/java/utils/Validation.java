@@ -22,6 +22,8 @@ public class Validation {
     public static final String listeErrorAttribut = "listeErreurs";
     
     public static final String msgInfoCommande = "msgInfoCommande";
+    
+    public static final String msgLoginRequis = "msgLoginRequis";
  
     
 
