@@ -2,6 +2,7 @@
 <%@page import="actions.CategorieAction"%>
 <%@page import="entities.Categorie"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="managers.SessionManager" %>
 <% CategorieAction.afficherToutesLesCategorie(request);
     ArrayList<Categorie> listCategorie = (ArrayList<Categorie>) request.getAttribute("listeCategorie");
 %>
@@ -23,7 +24,8 @@
             <%}%>
         </div>
     </div>
-    <a class="a_nav2" href="pagesControler?action=deconnexion"><i class="fa fa-fw fa-user"></i> Deconnection</a>
+        
+    <%= (SessionManager.session == null) ? "" : "<a class=\"a_nav2\" href=\"pagesControler?action=deconnexion\"><i class=\"fa fa-fw fa-user\"></i> Deconnexion</a>" %>    
     <a class="a_nav2" href="pagesControler?action=panier"><i class="fa fa-shopping-cart"></i>Panier</a>
-    <a class="a_nav2" href="commandeControler?action=commandes"><i class="fa fa-shopping-cart"></i>Mes commandes</a>
+    <%= (SessionManager.session == null) ? "" : "<a class=\"a_nav2\" href=\"commandeControler?action=commandes\"><i class=\"fa fa-shopping-cart\"></i>Mes commandes</a>" %>
 </nav>

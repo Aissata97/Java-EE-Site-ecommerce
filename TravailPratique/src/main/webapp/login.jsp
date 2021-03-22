@@ -10,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% String erreurClient = (String)request.getAttribute(ClientAction.erreurClient);
-   String msgLoginRequis = (String) request.getAttribute(Validation.msgLoginRequis);
+    String msgLoginRequis = (String) request.getAttribute(Validation.msgLoginRequis);
     Cookie email = CookieManager.getCookyByNom(request, "email");
     Cookie mdp = CookieManager.getCookyByNom(request, "mdp");
 %>
