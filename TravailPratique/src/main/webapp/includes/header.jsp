@@ -25,7 +25,7 @@
         </div>
     </div>
         
-    <%= (SessionManager.session == null) ? "" : "<a class=\"a_nav2\" href=\"pagesControler?action=deconnexion\"><i class=\"fa fa-fw fa-user\"></i> Deconnexion</a>" %>    
+    <%= (SessionManager.getByKey(request, true, "sessionClient") == null) ? "<a class=\"a_nav2\" href=\"pagesControler?action=connexion\"><i class=\"fa fa-fw fa-user\"></i> Connexion</a>" : "<a class=\"a_nav2\" href=\"pagesControler?action=deconnexion\"><i class=\"fa fa-fw fa-user\"></i> Deconnexion</a>" %>    
     <a class="a_nav2" href="pagesControler?action=panier"><i class="fa fa-shopping-cart"></i>Panier</a>
-    <%= (SessionManager.session == null) ? "" : "<a class=\"a_nav2\" href=\"commandeControler?action=commandes\"><i class=\"fa fa-shopping-cart\"></i>Mes commandes</a>" %>
+    <%= (SessionManager.getByKey(request, true, "sessionClient") == null) ? "" : "<a class=\"a_nav2\" href=\"commandeControler?action=commandes\"><i class=\"fa fa-shopping-cart\"></i>Mes commandes</a>" %>
 </nav>

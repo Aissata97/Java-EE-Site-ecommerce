@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import managers.CommandeManager;
+import managers.SessionManager;
 import static managers.SessionManager.session;
 import utils.Validation;
 
@@ -42,7 +43,7 @@ public class CommandeControler extends HttpServlet {
         String url = "";
         
         //Si le client est connecté...
-        if (session != null){
+        if (SessionManager.getByKey(request, true, ClientAction.clientSessionAttr) != null){
             //Recuperation des donnees
             HashMap<Integer, LigneComande> listeProduitPanier = (HashMap<Integer, LigneComande>) session.getAttribute("panier");
             Client client = (Client) session.getAttribute(ClientAction.clientSessionAttr);

@@ -8,6 +8,7 @@
 <%@page import="actions.ClientAction"%>
 <%@page import="utils.Validation" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page session="false" %>
 
 <% String erreurClient = (String)request.getAttribute(ClientAction.erreurClient);
     String msgLoginRequis = (String) request.getAttribute(Validation.msgLoginRequis);
@@ -20,8 +21,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/login.css" >
+        <%@include file="includes/head.jsp" %>       
     </head>
     <body>
+        <%@include file="includes/header.jsp" %>
         <form action="clientControler" method="post">
             <div class="imgcontainer">
                 <img src="images/login-icon.png" alt="Avatar" class="avatar">

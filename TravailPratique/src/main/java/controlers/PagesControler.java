@@ -35,6 +35,8 @@ public class PagesControler extends HttpServlet {
             }else if (action.equals("deconnexion")){
                 url = "login.jsp";
                 SessionManager.supprimerSession(request);
+            }else if (action.equals("connexion")){
+                url = "login.jsp";
             }else if (action.equals("panier")){
                 url = "panier.jsp";
             }else if (action.equals("commandes")){

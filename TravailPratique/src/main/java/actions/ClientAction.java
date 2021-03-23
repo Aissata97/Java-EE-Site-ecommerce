@@ -24,6 +24,7 @@ public class ClientAction {
         Client clientRetour = ClientManager.checkClient(clientToCheick);
         if (clientRetour == null){
             request.setAttribute(erreurClient, "Utilisateur non non trouvee !");
+            SessionManager.session.setAttribute(clientSessionAttr, null);
             retour = false;
         }else{
             SessionManager.creerSessionClient(request, clientSessionAttr, clientRetour);
@@ -32,4 +33,9 @@ public class ClientAction {
         
         return retour;
     }
+    
+    /*
+    public static void creerSession(HttpServletRequest request, Client client){
+        SessionManager.creerSessionClient(request, clientSessionAttr, client);
+    }*/
 }

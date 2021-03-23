@@ -26,8 +26,11 @@ public class SessionManager {
     }
 
     public static void supprimerSession(HttpServletRequest request) {
-        session = request.getSession();
-        session.invalidate();
+        if (session != null){
+            session = request.getSession();
+            session.invalidate();
+        }
+       
     }
 
     public static HttpSession recuperer(HttpServletRequest request, boolean creerSession) {
@@ -50,7 +53,7 @@ public class SessionManager {
         return retour;
     }
 
-    public static Object getByKey(HttpServletRequest request, boolean creer, String key) {
+   public static Object getByKey(HttpServletRequest request, boolean creer, String key) {
         Object retour = null;
         HttpSession session = recuperer(request, creer);
         if (creer || !creer && session != null) {
