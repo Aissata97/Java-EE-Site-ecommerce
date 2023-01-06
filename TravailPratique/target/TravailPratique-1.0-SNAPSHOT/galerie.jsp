@@ -14,6 +14,7 @@
     </head>
     <body>
         <%@include file="includes/header.jsp" %>
+        <article>
         <div>
             <fieldset>
                 <div class="h1_gal">
@@ -58,6 +59,7 @@
                                                              alt="googleVr" title="google Vr"></a>
             </fieldset>
         </div>
+        </article>
         <%@include file="includes/footer.jsp" %>
     </body>
 </html>

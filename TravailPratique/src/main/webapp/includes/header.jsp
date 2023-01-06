@@ -8,10 +8,8 @@
 %>
 
 <header>
-    <img src="images/images.png" alt="pure Phone">
+    <img src="images/images.png" alt="pure Phone" />
     <b>Pure Phone</b>
-</header>
-
 <nav>
     <a class="a_nav" href="pagesControler?action=home"><b>Home</b></a>
     <a class="a_nav" href="produitControler"><b>Catalogue</b></a>
@@ -29,3 +27,5 @@
     <a class="a_nav2" href="pagesControler?action=panier"><i class="fa fa-shopping-cart"></i>Panier</a>
     <%= (SessionManager.getByKey(request, true, "sessionClient") == null) ? "" : "<a class=\"a_nav2\" href=\"commandeControler?action=commandes\"><i class=\"fa fa-shopping-cart\"></i>Mes commandes</a>" %>
 </nav>
+
+</header>

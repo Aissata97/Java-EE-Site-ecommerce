@@ -21,6 +21,7 @@
     </head>
     <body>
         <%@include file="../includes/header.jsp" %>
+        <article>
         <h1>Vos commandes</h1>
         <table>
             <tr>
@@ -38,7 +39,7 @@
             <% }
                    }%>
         </table>
-
+        </article>
         <%@include file="../includes/footer.jsp" %>
     </body>
 </html>

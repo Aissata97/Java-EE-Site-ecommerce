@@ -13,6 +13,7 @@
     </head>
     <body>
         <%@include file="includes/header.jsp" %>
+        <article>
         <div class="wel_int">
             <h1 id="welcome"> <b>Tired of having the same old phone ?</b></h1>
             <div id="intro_txt">
@@ -41,6 +42,7 @@
                 </video>
             </div>
         </div>
+        </article>
         <%@include file="includes/footer.jsp" %>
     </body>
 </html>

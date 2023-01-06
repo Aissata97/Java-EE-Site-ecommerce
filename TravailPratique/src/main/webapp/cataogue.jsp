@@ -21,6 +21,7 @@
     </head>
     <body>
         <%@include file="includes/header.jsp" %>
+        <article>
         <div class="allProducts">
             <%for (Produit produit : produits) {%>
             <div class="product">
@@ -41,6 +42,7 @@
 
             <%}%>
         </div>
+        </article>
         <%@include file="includes/footer.jsp" %>
     </body>
 </html>

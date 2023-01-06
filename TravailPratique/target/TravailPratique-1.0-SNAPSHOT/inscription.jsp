@@ -24,6 +24,7 @@
     </head>
     <body>
         <%@include file="includes/header.jsp" %>
+        <article>
         <form action="insciptionControler" method="get">
             <h2>Formulaire d'inscription</h2>
 
@@ -60,5 +61,7 @@
             <input type="submit" class="btn" value="Inscription"/>
         </form>
         <% out.println((msgInscriptionOk == null) ? "<p></p>" : "<p>" + msgInscriptionOk + "</p>");%>
+        </article>
+        <%@include file="includes/footer.jsp" %>
     </body>
 </html>

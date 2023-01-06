@@ -36,8 +36,9 @@
     </head>
     <body>
         <%@include file="includes/header.jsp"%>
+        <article>
         <h1>Vos produits ajoutes au panier</h1>
-
+        
         <table>
             <%
                 if (listeProduitPanier != null) {
@@ -86,6 +87,7 @@
 
         <% out.println((infoCommande == null) ? "<p></p>" : "<p>" + infoCommande + "</p>");%>
 
+        </article>
         <%@include file="includes/footer.jsp"%>
     </body>
 </html>

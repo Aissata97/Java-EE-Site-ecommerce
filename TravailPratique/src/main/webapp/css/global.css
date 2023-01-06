@@ -1,12 +1,21 @@
-html {
+/*html {
     background-color: white;
     margin-top: 0;
-}
+}*/
 
-body {
-    margin: 0;
+body {   
     margin-left: 0%;
     background-color: #ECA400;
+    /**/
+    position: relative;
+    min-height:100vh;
+    margin: 0;
+    /**/
+}
+body::after {
+  content: '';
+  display: block;
+  height: 170px;
 }
 
 header {
@@ -100,6 +109,10 @@ footer {
     margin-top: 30px;
     font-size: 1.5vw;
     padding: 10px;
+    /**/
+    position: absolute;
+    width: 100%;
+    bottom : 0;
 }
 /* patie reseaux */
 .foot_div1 {

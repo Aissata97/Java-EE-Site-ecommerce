@@ -91,9 +91,8 @@
 }
 
 
-button{
+article button{
     margin-top: 100px;
-    width: 50%;
     margin-left: 30%;
     display: block;
     color: white;
@@ -105,7 +104,7 @@ button{
 
 }
 
-button:hover{
+article button:hover{
     color: #e65c00;
     background-color: lightgray;
 }

@@ -25,6 +25,7 @@
     </head>
     <body>
         <%@include file="includes/header.jsp" %>
+        <article>
         <form action="clientControler" method="post">
             <div class="imgcontainer">
                 <img src="images/login-icon.png" alt="Avatar" class="avatar">
@@ -46,9 +47,11 @@
             </div>
             <% out.println( (erreurClient == null) ? "<p></p>" : "<p style='color:red; text-align:center;'>"+ erreurClient + "</p>"); %>
 
-            <div class="container" style="background-color:#f1f1f1">
+            <div class="containerLogInscription">
                 <span class="psw">Vous n'avez pas de compte ? <a href="inscription.jsp">Inscription</a></span>
             </div>
         </form>
+        </article>
+        <%@include file="includes/footer.jsp" %>
     </body>
 </html>

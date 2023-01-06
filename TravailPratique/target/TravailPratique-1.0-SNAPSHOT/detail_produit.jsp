@@ -20,7 +20,7 @@
     </head>
     <body>
         <%@include file="../includes/header.jsp" %>
-
+        <article>
         <div class="product_box">
             <h1><b><%=produit.getTitre()%></b></h1>
             <div class="phone_display">
@@ -65,7 +65,7 @@
         </div>
                 
         
-
+        </article>
         <%@include file="../includes/footer.jsp" %>
     </body>
 </html>

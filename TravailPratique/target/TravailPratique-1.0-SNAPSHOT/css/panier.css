@@ -7,7 +7,9 @@ and open the template in the editor.
     Created on : May 20, 2020, 5:20:15 PM
     Author     : aouattar
 */
-
+/*html, body{
+    height : 100%;
+}*/
 .btnPlusMoins{
     display: flex;
     flex-direction: row;

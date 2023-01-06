@@ -50,6 +50,11 @@ img.avatar {
     padding: 16px;
 }
 
+.containerLogInscription{
+    background-color: #f1f1f1;
+    padding: 16px;
+}
+
 span.psw {
     float: right;
     padding-top: 16px;
